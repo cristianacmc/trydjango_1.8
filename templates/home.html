@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block head_title %} Welcome | {{block.super}} {% endblock %}
+
+<style>
+{% block style %}
+
+
+{% endblock %}
+</style>
+
+{% block jumbotron %}
+
+<div class="jumbotron">
+    <div class="row">
+      <div class='col-sm-6'>
+        <h1>Women Who Code</h1>
+        <p class='lead'>Get your project start! The goal is to help you get in in technology area. Join Us Today .</p>
+        <p>To see the difference between static and fixed top navbars, just scroll.</p>
+        <p>
+          <a class="btn btn-lg btn-primary" href="" role="button">Join Us &raquo;</a>
+        </p>
+      </div>
+  <div class='col-sm-6' style="background-color:black; height:300px;">
+  </div>
+
+ </div> 
+</div>
+{% endblock %}
+
+
+
+{% block content %}
+<div class="row">
+
+  <div class="col-sm-3 pull-right">
+
+      <p class='lead'>{{ title }}</p>
+    
+      <form method='POST' action=''>{% csrf_token %}
+      {{form|crispy }}
+
+      <input class="btn btn-success" type='submit' value='Sign Up'/>
+
+      </form>
+
+  </div>
+  
+  <div class='col-sm-3'>
+    <p class='lead'>Built with Django &amp; Bootstrap</p>
+  </div>
+
+  <div class='col-sm-3'>
+    <p class='lead'>Created for starters of all kinds</p>
+  </div>
+
+  <div class='col-sm-3'>
+    <p class='lead'>Always open Source </p>
+  </div>
+
+</div>  
+
+{% endblock %}
