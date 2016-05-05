@@ -5,7 +5,7 @@ from django.core.mail import send_mail
 
 # Create your views here.
 def home(request):
-    title = "Welcome"
+    title = "Sign Up now!"
     form = SignUpForm(request.POST or None)
     context = {
         "title": title,
@@ -26,6 +26,10 @@ def home(request):
         context = {
          "title": "Thank You",
          }
+    if request.user.is_authenticated() and request.user.is_staff:
+        context = {
+            "queryset": [123,456]
+        }
     return render(request, "home.html", context)
 
 def Contact(request):

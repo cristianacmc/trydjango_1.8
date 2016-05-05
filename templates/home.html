@@ -15,12 +15,11 @@
   color:#fff;
   }
 }
-
-
 {% endblock %}
 </style>
 
 {% block jumbotron %}
+{% if not request.user.is.authenticated %}
 
   <div class="jumbotron">
     <div class="container">
@@ -31,19 +30,26 @@
           <p>To see the difference between static and fixed top navbars, just scroll.</p>
           <p><a class="btn btn-lg btn-primary" href="" role="button">Join Us &raquo;</a></p>
         </div>
-     <div class='col-sm-6'>
+        <div class='col-sm-6'>
         <iframe width="560" height="315" src="https://www.youtube.com/embed/4OlGpS2LG_M" frameborder="0" allowfullscreen></iframe>
         <!--<img src='http://www.kalinin84.info/wp-content/uploads/2015/07/s2.jpg' class='img-resposive' />-->
      </div>
     </div> 
    </div>
   </div>
-
+{% endif %}
 {% endblock %}
 
 
 
 {% block content %}
+ {% if request.user.is_authenticated %}
+  <h1>You are Logged In </h1>
+  
+  {{queryset}}
+
+ {% else %}
+
 <div class="row">
 
   <div class="col-sm-3 pull-right">
@@ -57,12 +63,12 @@
   </div>
   
   <div class='col-sm-3'>
-    <p class='lead text-align-center'>Built with Django &amp; Bootstrap</p>
+    <p class='lead text-align-center'>Django &amp; Bootstrap</p>
     <img src='{% static "img/marketing1.jpg" %}' class='img-responsive' />
   </div>
 
   <div class='col-sm-3'>
-    <p class='lead text-align-center'>Created for starters of all kinds 
+    <p class='lead text-align-center'>Created for starters 
     <br/>
     <span class='fa-stack fa-lg fa-5x'>
       <i class="fa fa-comment-o  fa-stack-2x"></i>
@@ -74,11 +80,12 @@
   <div class='col-sm-3'>
     <p class='lead text-align-center'>Always open Source <br/><br/>
     <span class="fa-stack fa-lg fa-5x">
-      <i class="fa fa-circle-o-notch fa-stack-2x fa-spin"></i>
+      <i class="fa fa-circle-o-notch fa-stack-2x"></i>
       <i class="fa fa-github fa-stack-1x " aria-hidden="true"></i>
     </span>
     </p>
   </div>
 
 </div>  
+{% endif %}
 {% endblock %}
