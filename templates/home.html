@@ -46,7 +46,14 @@
  {% if request.user.is_authenticated %}
   <h1>You are Logged In </h1>
   
-  {{queryset}}
+  {% if queryset %}
+    <h2>Welcome Staff<h2>
+    <table class='table'>
+    {% for instance in queryset %}
+        <tr><td>{{ forloop.counter }} </td><td>{{ instance.full_name}}</td><td>{{instance}}</td><td>{{instance.timestamp|timesince}} ago <td/></tr>
+    {% endfor %}
+    </table>
+  {% endif %}
 
  {% else %}
 
